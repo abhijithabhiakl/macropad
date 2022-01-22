@@ -1,5 +1,5 @@
 print("Starting")
-
+#a change made after adding gitignore
 import board
 import digitalio
 from kmk.kmk_keyboard import KMKKeyboard
