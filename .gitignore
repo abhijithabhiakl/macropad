@@ -1,7 +1,12 @@
+#Folders
 boards/
 kmk/
 lib/
 OLD/
 util/
+.vscode/
+
+
+#Files
 boot.py
 boot_out.txt

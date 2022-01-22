@@ -11,12 +11,17 @@ from kmk.modules.layers import Layers
 
 
 keyboard = KMKKeyboard()
-keyboard.modules.append(Layers())
+
+layers = Layers()
+encoder_handler = EncoderHandler()
+keyboard.modules = [layers, encoder_handler]
 
 #Pin allocation
 keyboard.col_pins = (board.GP2, board.GP3, board.GP4)
 keyboard.row_pins = (board.GP6, board.GP7, board.GP8)
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
+
+encoder_handler.pins = ((board.GP13, board.GP14, board.GP15, False),)
 
 
 XX = KC.TRNS
@@ -41,6 +46,13 @@ keyboard.keymap = [
      ]
 ]
 
+
+# Rotary Encoder (1 encoder / 1 definition per layer)
+
+encoder_handler.map = ( ((KC.VOLD, KC.VOLU, FN1),), # Standard
+                        ((KC.VOLD, KC.VOLU, FN3),), # Second layer
+                        ((KC.VOLD, KC.VOLU, FN2),), # Third layer
+                        )
 
 if __name__ == '__main__':
     keyboard.go()
