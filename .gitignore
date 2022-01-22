@@ -3,4 +3,5 @@ kmk/
 lib/
 OLD/
 util/
-!code.py
+boot.py
+boot_out.txt
