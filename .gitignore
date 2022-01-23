@@ -10,3 +10,4 @@ util/
 #Files
 boot.py
 boot_out.txt
+neopixel.py
