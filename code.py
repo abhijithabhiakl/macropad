@@ -150,14 +150,14 @@ APH9 = KC.TD(
 
 keyboard.keymap = [
     [
-        DF_M1,DF_M2,DF_M3,  # Default Layer
-        KC.F11,KC.LCTL(KC.LSFT(KC.TAB)),KC.LCTL(KC.TAB),
-        KC.LWIN(KC.PSCR),KC.F11,KC.MPLY
-     ],
-    [
         KC.RGB_TOG,KC.RGB_SAD,KC.RGB_SAI,
         RGB_M2,KC.RGB_VAD,KC.RGB_VAI,
         RGB_M1,KC.RGB_ANI,KC.RGB_AND
+     ],
+    [
+        DF_M1,DF_M2,DF_M3,  # Default Layer
+        KC.F11,KC.LCTL(KC.LSFT(KC.TAB)),KC.LCTL(KC.TAB),
+        KC.LWIN(KC.PSCR),KC.F11,KC.MPLY
      ],
     [
         APH1,APH2,APH3,
@@ -174,10 +174,10 @@ keyboard.keymap = [
 
 # Rotary Encoder (1 encoder / 1 definition per layer)
 
-encoder_handler.map = ( ((KC.VOLD, KC.VOLU, FN2),), # Standard
-                        ((KC.RGB_HUI, KC.RGB_HUD, FN3),), # RGB layer
+encoder_handler.map = ( ((KC.RGB_HUI, KC.RGB_HUD, FN2),),  # RGB layer
+                        ((KC.VOLD, KC.VOLU, FN3),),        # Standard
                         ((KC.BSPC, KC.LCTRL(KC.Z), FN4),), # Alphabet layer
-                        ((KC.N8,KC.N9, FN1),)              #Numberpad layer
+                        ((KC.N8,KC.N9, FN1),)              # Numberpad layer
                         )
 
 if __name__ == '__main__':
