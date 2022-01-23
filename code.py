@@ -87,15 +87,24 @@ encoder_handler.pins = ((board.GP14, board.GP13, board.GP15, False),)
 # LYR_STD, LYR_EXT, LYR_NUM, LYR_GAME = 0, 1, 2, 3
 
 XX = KC.TRNS
-FN1 = KC.TO(1)
-FN2 = KC.TO(0)
+FN1 = KC.TO(0)
+FN2 = KC.TO(1)
 FN3 = KC.TO(2)
-
+FN4 = KC.TO(3)
 
 # Tap dance
 DF_M1 = KC.TD(
     KC.LCTL(KC.T),
+    KC.LGUI(KC.E)
+)
+DF_M2 = KC.TD(
+    KC.LCTL(KC.F4),
+    KC.LALT(KC.F4),
     KC.ESC
+)
+DF_M3 = (
+    KC.LCTL(KC.LSFT(KC.T)),
+    KC.CTRL(KC.S)
 )
 RGB_M1 = KC.TD(
     KC.RGB_M_P,
@@ -107,32 +116,67 @@ RGB_M2 = KC.TD(
     KC.RGB_M_K,
     KC.RGB_M_BR
 )
+APH1 = KC.TD(
+    KC.A, KC.B,KC.C
+)
+APH2 = KC.TD(
+    KC.D,KC.E,KC.F
+)
+APH3 = KC.TD(
+    KC.G,KC.H,KC.I
+)
+APH4 = KC.TD(
+    KC.J,KC.K,KC.L
+)
+APH5 = KC.TD(
+    KC.M,KC.N,KC.O
+)
+APH6 = KC.TD(
+    KC.P,KC.Q,KC.R,KC.S
+)
+APH7 = KC.TD(
+    KC.T,KC.U,KC.V
+)
+APH8 = KC.TD(
+    KC.W,KC.X,KC.Y,KC.Z
+)
+APH9 = KC.TD(
+    KC.AT,KC.CAPS
+)
+
+
 
 
 keyboard.keymap = [
     [
-        KC.LCTL(KC.LSFT(KC.T)),KC.LCTL(KC.F4),DF_M1,  # Default Layer
+        DF_M3,DF_M2,DF_M1,  # Default Layer
         KC.F11,KC.LCTL(KC.LSFT(KC.TAB)),KC.LCTL(KC.TAB),
         KC.LWIN(KC.PSCR),KC.F11,KC.MPLY
-     ],
-    [
-        XX,KC.W,XX,
-        KC.A,KC.S,KC.D,
-        KC.SPACE,XX,FN3
      ],
     [
         KC.RGB_TOG,KC.RGB_SAD,KC.RGB_SAI,
         RGB_M2,KC.RGB_VAD,KC.RGB_VAI,
         RGB_M1,KC.RGB_ANI,KC.RGB_AND
+     ],
+    [
+        APH1,APH2,APH3,
+        APH4,APH5,APH6,
+        APH7,APH8,APH9
+     ],
+     [
+        KC.N1,KC.N2,KC.N3,
+        KC.N4,KC.N5,KC.N6,
+        KC.N7,KC.N0,KC.LSFT
      ]
 ]
 
 
 # Rotary Encoder (1 encoder / 1 definition per layer)
 
-encoder_handler.map = ( ((KC.VOLD, KC.VOLU, FN1),), # Standard
-                        ((KC.VOLD, KC.VOLU, FN3),), # Second layer
-                        ((KC.RGB_HUI, KC.RGB_HUD, FN2),), # Third layer
+encoder_handler.map = ( ((KC.VOLD, KC.VOLU, FN2),), # Standard
+                        ((KC.RGB_HUI, KC.RGB_HUD, FN3),), # RGB layer
+                        ((KC.BSPC, KC.LCTRL(KC.Z), FN4),), # Alphabet layer
+                        ((KC.N8,KC.N9, FN1),)              #Numberpad layer
                         )
 
 if __name__ == '__main__':
