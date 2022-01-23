@@ -43,17 +43,17 @@ rgb_ext = RGB(
     pixel_pin=board.GP9,
     num_pixels=1,
     val_limit=255,
-    hue_default=0,
-    sat_default=100,
+    hue_default=210,
+    sat_default=30,
     rgb_order=(2, 0, 1),  # GRB WS2812
-    val_default=160,
+    val_default=200,
     hue_step=1,
-    sat_step=1,
-    val_step=1,
-    animation_speed=2.5,
-    breathe_center=1.9,  # 1.0-2.7
+    sat_step=5,
+    val_step=5,
+    animation_speed=1.8,
+    breathe_center=1.6,  # 1.0-2.7
     knight_effect_length=1,
-    animation_mode=4,
+    animation_mode=AnimationModes.BREATHING,
     reverse_animation=False,
     )
 
@@ -93,6 +93,10 @@ FN3 = KC.TO(2)
 
 
 # Tap dance
+DF_M1 = KC.TD(
+    KC.LCTL(KC.T),
+    KC.ESC
+)
 RGB_M1 = KC.TD(
     KC.RGB_M_P,
     KC.RGB_M_B,
@@ -107,7 +111,7 @@ RGB_M2 = KC.TD(
 
 keyboard.keymap = [
     [
-        KC.LCTL(KC.LSFT(KC.T)),KC.LCTL(KC.F4),KC.LCTL(KC.T),
+        KC.LCTL(KC.LSFT(KC.T)),KC.LCTL(KC.F4),DF_M1,  # Default Layer
         KC.F11,KC.LCTL(KC.LSFT(KC.TAB)),KC.LCTL(KC.TAB),
         KC.LWIN(KC.PSCR),KC.F11,KC.MPLY
      ],
@@ -117,8 +121,8 @@ keyboard.keymap = [
         KC.SPACE,XX,FN3
      ],
     [
-        KC.RGB_TOG,KC.RGB_SAI,KC.RGB_SAD,
-        RGB_M2,KC.RGB_VAI,KC.RGB_VAD,
+        KC.RGB_TOG,KC.RGB_SAD,KC.RGB_SAI,
+        RGB_M2,KC.RGB_VAD,KC.RGB_VAI,
         RGB_M1,KC.RGB_ANI,KC.RGB_AND
      ]
 ]
