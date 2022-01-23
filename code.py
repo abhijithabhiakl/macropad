@@ -44,7 +44,7 @@ rgb_ext = RGB(
     num_pixels=1,
     val_limit=255,
     hue_default=210,
-    sat_default=30,
+    sat_default=100,
     rgb_order=(2, 0, 1),  # GRB WS2812
     val_default=200,
     hue_step=1,
@@ -94,18 +94,19 @@ FN4 = KC.TO(3)
 
 # Tap dance
 DF_M1 = KC.TD(
-    KC.LCTL(KC.T),
-    KC.LGUI(KC.E)
+    KC.LCTL(KC.LSFT(KC.T)),
+    KC.LCTL(KC.S)
 )
 DF_M2 = KC.TD(
     KC.LCTL(KC.F4),
     KC.LALT(KC.F4),
     KC.ESC
 )
-DF_M3 = (
-    KC.LCTL(KC.LSFT(KC.T)),
-    KC.CTRL(KC.S)
+DF_M3 = KC.TD(
+    KC.LCTL(KC.T),
+    KC.LGUI(KC.E)
 )
+
 RGB_M1 = KC.TD(
     KC.RGB_M_P,
     KC.RGB_M_B,
@@ -149,7 +150,7 @@ APH9 = KC.TD(
 
 keyboard.keymap = [
     [
-        DF_M3,DF_M2,DF_M1,  # Default Layer
+        DF_M1,DF_M2,DF_M3,  # Default Layer
         KC.F11,KC.LCTL(KC.LSFT(KC.TAB)),KC.LCTL(KC.TAB),
         KC.LWIN(KC.PSCR),KC.F11,KC.MPLY
      ],
